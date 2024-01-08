@@ -86,7 +86,7 @@ function Header() {
             {session && (
                 <>
                     <Link href="/dashboard" className="text-muted-foreground hover:text-gray-300 transition-colors duration-200 transform px-6 py-3 rounded-md">
-                        my fittings
+                        Dashboard
                     </Link>
                     <Link
                         className="text-muted-foreground hover:text-gray-300 transition-colors duration-200 transform px-6 py-3 rounded-md"

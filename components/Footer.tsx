@@ -25,11 +25,7 @@ const Footer: React.FC = () => {
           <li className="">
             <Link href="/privacy" className="text-muted-foreground hover:text-gray-300 transition-colors duration-200 transform px-6 py-3 rounded-md">Datenschutz</Link>
           </li>
-          <li className="">
-            <Link href="/blog" className="text-muted-foreground hover:text-gray-300 transition-colors duration-200 transform px-6 py-3 rounded-md">
-                Blog
-            </Link>
-          </li>
+          
         </ul>
       </nav>
       <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Sustainr. All rights reserved.</p>

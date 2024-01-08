@@ -106,73 +106,47 @@ export default function DashboardPage() {
   };
 
   return (
-    <>
-      
-      <div className="h-full flex-1 flex-col space-y-8 p-8 flex">
-
-      <div className="grid gap-2">
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            id="date"
-            variant={"outline"}
-            className="w-[300px] justify-start text-left font-normal text-muted-foreground"
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date?.from ? (
-              date.to ? (
-                <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
-                </>
-              ) : (
-                format(date.from, "LLL dd, y")
-              )
-            ) : (
-              <span>Pick a date</span>
-            )}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-          <Calendar
-            initialFocus
-            mode="range"
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
-            numberOfMonths={2}
-          />
-        </PopoverContent>
-      </Popover>
-    </div>
-
-        <div className="flex items-center justify-between space-y-2">
-          <h3 className="text-xl font-bold">Daily CO2 Emissions</h3>
-          <Line data={chartData} />
+    <div className="h-full w-full flex p-8">
+      <div className="">
+        <h1 className="text-xl font-bold">Daily CO2 Emissions</h1>
+        <div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                id="date"
+                variant={"outline"}
+                className="w-[300px] justify-start text-left font-normal text-muted-foreground"
+              >
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {date?.from ? (
+                  date.to ? (
+                    <>
+                      {format(date.from, "LLL dd, y")} -{" "}
+                      {format(date.to, "LLL dd, y")}
+                    </>
+                  ) : (
+                    format(date.from, "LLL dd, y")
+                  )
+                ) : (
+                  <span>Pick a date</span>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                initialFocus
+                mode="range"
+                defaultMonth={date?.from}
+                selected={date}
+                onSelect={setDate}
+                numberOfMonths={2}
+              />
+            </PopoverContent>
+          </Popover>
         </div>
 
-        <div className="flex items-center justify-between space-y-2">
-
-            <div>
-                <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
-                <p className="text-muted-foreground">
-                    Here is the CO2 Footprint of your page!
-                </p>            
-                {sustainr.map((item, index) => (
-                    <div key={index} className="border">
-                        <p>{item.client_id}</p>
-                        {item.resources && JSON.parse(item.resources).map((resource, indexInner) => (
-                            <div key={indexInner}>
-                                <p>{resource.name}</p>
-                                <p>{co2Emission.perByte(resource.transferSize, true)} grams of CO2</p>
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </div>
+        <Line data={chartData} />
+      </div>
     </div>
-
-    </>
   )
 }
